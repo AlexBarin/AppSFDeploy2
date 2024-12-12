@@ -51,7 +51,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+      - name: Debug workspace
+        run: ls -R
       - name: Deploy to Ubuntu Server
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
@@ -63,5 +64,5 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
-          scp -r PATH_JAVA alex@$SERVER_IP:$DEPLOY_PATH
+          scp -r $PATH_JAVA alex@$SERVER_IP:$DEPLOY_PATH
           ssh ubuntu@$SERVER_IP "sudo systemctl restart my-java-service"
