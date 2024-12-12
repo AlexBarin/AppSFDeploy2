@@ -62,5 +62,5 @@ jobs:
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
-          scp -r target/App.jar alex@$SERVER_IP:$DEPLOY_PATH
+          scp -r /home/runner/work/AppSFDeploy2/AppSFDeploy2/target/TestApp-1.0-SNAPSHOT.jar alex@$SERVER_IP:$DEPLOY_PATH
           ssh ubuntu@$SERVER_IP "sudo systemctl restart my-java-service"
