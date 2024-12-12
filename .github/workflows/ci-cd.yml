@@ -23,7 +23,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+      - name: Set up Maven
+        uses: s4u/maven-settings-action@v2
+        with:
+          maven-version: 3.9.4
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
