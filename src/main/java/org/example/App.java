@@ -8,7 +8,7 @@ public class App {
 //second test
 //next try
 //hope no
-//last zaparila
+//last zap
 
 
     public static void main(String[] args) {
