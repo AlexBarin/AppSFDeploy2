@@ -57,10 +57,11 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           SERVER_IP: ${{ secrets.SERVER_IP }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          PATH_JAVA: ${{ secrets.PATH_JAVA }}
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
-          scp -r ./target/TestApp-1.0-SNAPSHOT.jar alex@$SERVER_IP:$DEPLOY_PATH
+          scp -r PATH_JAVA alex@$SERVER_IP:$DEPLOY_PATH
           ssh ubuntu@$SERVER_IP "sudo systemctl restart my-java-service"
