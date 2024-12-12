@@ -18,22 +18,13 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        java: [22]
+        java: [21]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Set up Maven
         uses: s4u/maven-settings-action@v2
-
-      - name: Install Java 22
-        run: |
-          wget https://download.java.net/java/GA/jdk22/latest/binaries/openjdk-22_linux-x64_bin.tar.gz
-          tar -xzf openjdk-22_linux-x64_bin.tar.gz
-          sudo mv jdk-22 /usr/lib/jvm/jdk-22
-          echo "JAVA_HOME=/usr/lib/jvm/jdk-22" >> $GITHUB_ENV
-          echo "PATH=/usr/lib/jvm/jdk-22/bin:$PATH" >> $GITHUB_ENV
-          java -version
 
 
       - name: Debug workspace
@@ -48,7 +39,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '22'
+          java-version: '21'
 
       - name: Cache Maven dependencies
         uses: actions/cache@v3
