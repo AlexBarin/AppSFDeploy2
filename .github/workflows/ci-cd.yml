@@ -106,4 +106,4 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           ssh-keyscan -H $SERVER_IP >> ~/.ssh/known_hosts
           scp -r $PATH_JAVA alex@$SERVER_IP:$DEPLOY_PATH
-          ssh ubuntu@$SERVER_IP "sudo systemctl restart my-java-service"
+          ssh alex@$SERVER_IP "sudo systemctl restart my-java-service"
